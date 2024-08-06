@@ -1,5 +1,6 @@
+// src/interface/index.ts
 export interface IStep {
-  id: number;
+  id: string;
   date: string;
   distance: number;
 }
@@ -12,6 +13,6 @@ export interface IStepsForm {
 
 export interface IStepsRender {
   steps: IStep[];
-  onDelete: (id: number) => void;
-  onEdit: (id: number) => void;
+  onDelete: (id: string) => void;
+  onEdit: (id: string) => void;
 }

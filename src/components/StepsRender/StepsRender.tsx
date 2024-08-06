@@ -1,3 +1,4 @@
+import React from "react";
 import { IStepsRender } from "../../interface";
 
 export const StepsRender: React.FC<IStepsRender> = ({ steps, onDelete, onEdit }) => {

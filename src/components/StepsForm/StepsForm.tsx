@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { IStepsForm, IStep } from "../../interface";
+import { IStepsForm } from "../../interface";
 import { v4 as uuidv4 } from 'uuid';
 
 export const StepsForm: React.FC<IStepsForm> = ({ editData, setSteps, setEditData }) => {
@@ -38,7 +38,7 @@ export const StepsForm: React.FC<IStepsForm> = ({ editData, setSteps, setEditDat
     });
   };
 
-  const updateStep = (id: number, date: string, distance: number) => {
+  const updateStep = (id: string, date: string, distance: number) => {
     setSteps((prevSteps) =>
       prevSteps.map((step) => {
         if (step.id === id) {

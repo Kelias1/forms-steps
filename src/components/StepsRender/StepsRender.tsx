@@ -16,12 +16,12 @@ export const StepsRender: React.FC<IStepsRender> = ({ steps, onDelete, onEdit })
 
       <div className={`result ${steps.length > 0 ? 'result--bordered' : ''}`}>
         {steps.map((step) => (
-          <div key={step.date}>
+          <div key={step.id}>
             <div className="date__result">{formatDate(step.date)}</div>
             <div className="distance__result">{step.distance}</div>
             <div className="btns">
-              <button className="edit__btn" onClick={() => onEdit(step.date)}>✎</button>
-              <button className="delete__btn" onClick={() => onDelete(step.date)}>✘</button>
+              <button className="edit__btn" onClick={() => onEdit(step.id)}>✎</button>
+              <button className="delete__btn" onClick={() => onDelete(step.id)}>✘</button>
             </div>
           </div>
         ))}

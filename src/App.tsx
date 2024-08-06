@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { StepsForm } from "./components/StepsForm";
 import { StepsRender } from "./components/StepsRender";
 import { IStep } from "./interface";
@@ -6,27 +6,14 @@ import './App.css';
 
 const App: React.FC = () => {
   const [steps, setSteps] = useState<IStep[]>([]);
-  const [editData, setEditData] = useState<IStep | undefined>(undefined)
+  const [editData, setEditData] = useState<IStep | undefined>(undefined);
 
-  const addStep = (date: string, distance: number) => {
-    setSteps((prevSteps) => {
-      const existingStep = prevSteps.find((w) => w.date === date);
-      if (existingStep) {
-        return prevSteps.map((w) =>
-          w.date === date ? { ...w, distance: w.distance + distance } : w
-        );
-      }
-      return [...prevSteps, { date, distance }].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    });
-    setEditData(undefined);
+  const deleteStep = (id: number) => {
+    setSteps((prevSteps) => prevSteps.filter((w) => w.id !== id));
   };
 
-  const deleteStep = (date: string) => {
-    setSteps((prevSteps) => prevSteps.filter((w) => w.date !== date));
-  };
-
-  const editStep= (date: string) => {
-    const step = steps.find((w) => w.date === date);
+  const editStep = (id: number) => {
+    const step = steps.find((w) => w.id === id);
     if (step) {
       setEditData(step);
     }
@@ -34,7 +21,8 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <StepsForm onSubmit={addStep} editData={editData} />
+      <StepsForm editData={editData} setSteps={setSteps} setEditData={setEditData} />
+      {/* @ts-ignore */}
       <StepsRender steps={steps} onDelete={deleteStep} onEdit={editStep} />
     </div>
   );

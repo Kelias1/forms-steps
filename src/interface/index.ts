@@ -1,4 +1,4 @@
-// src/interface/index.ts
+
 export interface IStep {
   id: string;
   date: string;

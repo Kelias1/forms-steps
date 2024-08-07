@@ -45,7 +45,7 @@ export const StepsForm: React.FC<IStepsForm> = ({ editData, setSteps, setEditDat
           return {
             ...step,
             date,
-            distance: step.date === date ? step.distance + distance : distance,
+            distance: step.date === date ? distance : distance,
           };
         }
         return step;
